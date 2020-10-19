@@ -1,21 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { accessKeySelectors } from 'redux/accessKey';
 import { SiteBar } from '../SiteBar';
 
 import { Styled } from './Layout.styles';
 
-const Layout = ({ hasAccessKey, children }) => (
-    <Styled.Layout>
-        {hasAccessKey && <SiteBar />}
+const Layout = ({ children }) => {
+    const hasAccessKey = useSelector(state => accessKeySelectors.getAccessKey(state));
 
-        {children}
-    </Styled.Layout>
-);
+    return (
+        <Styled.Layout>
+            {hasAccessKey && <SiteBar />}
 
-const mapStateToProps = state => ({
-    hasAccessKey: accessKeySelectors.getAccessKey(state),
-});
+            {children}
+        </Styled.Layout>
+    );
+};
 
-export default connect(mapStateToProps)(Layout);
+export default Layout;

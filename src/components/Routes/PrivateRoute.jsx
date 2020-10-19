@@ -1,19 +1,19 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import { accessKeySelectors } from 'redux/accessKey';
 import { paths } from 'routes';
 
-const PrivateRoute = ({ component: Component, hasAccessKey, ...routeProp }) => (
-    <Route
-        {...routeProp}
-        render={props => (hasAccessKey ? <Component {...props} /> : <Redirect to={paths.betAccess} />)}
-    />
-);
+const PrivateRoute = ({ component: Component, ...routeProp }) => {
+    const hasAccessKey = useSelector(state => accessKeySelectors.getAccessKey(state));
 
-const mapStateToProps = state => ({
-    hasAccessKey: accessKeySelectors.getAccessKey(state),
-});
+    return (
+        <Route
+            {...routeProp}
+            render={props => (hasAccessKey ? <Component {...props} /> : <Redirect to={paths.betAccess} />)}
+        />
+    );
+};
 
-export default connect(mapStateToProps)(PrivateRoute);
+export default PrivateRoute;

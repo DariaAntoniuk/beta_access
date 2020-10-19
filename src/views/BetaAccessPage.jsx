@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { accessKeyOperation } from '../redux/accessKey';
 
@@ -7,8 +7,9 @@ import { Form } from '../components/Form';
 import { FormField } from '../components/FormField';
 import { Button } from '../components/Button';
 
-const BetaAccessPage = ({ onCheckAccessKey }) => {
+const BetaAccessPage = () => {
     const [code, setCode] = useState('');
+    const dispatch = useDispatch();
 
     const handleInputChange = ({ target: { value } }) => {
         setCode(value);
@@ -18,7 +19,7 @@ const BetaAccessPage = ({ onCheckAccessKey }) => {
         e.preventDefault();
 
         console.log('submit', code);
-        onCheckAccessKey(code);
+        dispatch(accessKeyOperation.checkAccessKey(code));
         setCode('');
     };
 
@@ -34,8 +35,4 @@ const BetaAccessPage = ({ onCheckAccessKey }) => {
     );
 };
 
-const mapDispatchToProps = {
-    onCheckAccessKey: accessKeyOperation.checkAccessKey,
-};
-
-export default connect(null, mapDispatchToProps)(BetaAccessPage);
+export default BetaAccessPage;
