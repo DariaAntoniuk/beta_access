@@ -2,7 +2,7 @@ import React from 'react';
 
 import { paths } from 'routes';
 
-import { Styled } from "./SideBar.styles";
+import { Styled } from './SideBar.styles';
 
 const linkProps = {
     exact: true,

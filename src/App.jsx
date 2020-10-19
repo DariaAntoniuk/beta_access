@@ -13,6 +13,7 @@ import BetaAccessPage from 'views/BetaAccessPage';
 import HomePage from 'views/HomePage';
 import AboutUsPage from 'views/AboutUsPage';
 import { Notification } from 'components/Notification';
+import { Loader } from 'components/Loader';
 
 const App = ({ isLoading, hasError }) => (
     <Layout>
@@ -24,7 +25,7 @@ const App = ({ isLoading, hasError }) => (
             <Redirect to={paths.home} />
         </Switch>
 
-        {isLoading && <p>Loading....</p>}
+        {isLoading && <Loader align="center" />}
         {!isLoading && hasError && <Notification message={hasError} />}
     </Layout>
 );

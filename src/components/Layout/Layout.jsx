@@ -1,7 +1,7 @@
 import React from 'react';
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 
-import {accessKeySelectors} from "redux/accessKey";
+import { accessKeySelectors } from 'redux/accessKey';
 import { SiteBar } from '../SiteBar';
 
 import { Styled } from './Layout.styles';
