@@ -1,11 +1,11 @@
 import { accessKeyActions } from './index';
 
-import useAsyncSimulate from 'utils/useSimulateAsync';
+import simulateAsync from 'utils/simulateAsync';
 
 const checkAccessKey = accessKey => dispatch => {
     dispatch(accessKeyActions.ACCESS_KEY_REQUEST);
 
-    useAsyncSimulate(accessKey)
+    simulateAsync(accessKey)
         .then(response => {
             dispatch(accessKeyActions.accessKeySuccess(response));
         })

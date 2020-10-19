@@ -18,7 +18,8 @@ const Layout = styled.div`
     }
 
     & > div {
-        width: 600px;
+        max-width: 600px;
+        width: auto;
         margin: 0 auto;
     }
 `;
