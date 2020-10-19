@@ -1,7 +1,21 @@
 import React from 'react';
+import {connect} from "react-redux";
+
+import {accessKeySelectors} from "redux/accessKey";
+import { SiteBar } from '../SiteBar';
 
 import { Styled } from './Layout.styles';
 
-const Layout = ({ children }) => <Styled.Layout>{children}</Styled.Layout>;
+const Layout = ({ hasAccessKey, children }) => (
+    <Styled.Layout>
+        {hasAccessKey && <SiteBar />}
 
-export default Layout;
+        {children}
+    </Styled.Layout>
+);
+
+const mapStateToProps = state => ({
+    hasAccessKey: accessKeySelectors.getAccessKey(state),
+});
+
+export default connect(mapStateToProps)(Layout);
