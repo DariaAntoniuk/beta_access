@@ -1,5 +1,7 @@
 import React from 'react';
 
-const Layout = ({ children }) => <div>{children}</div>;
+import { Styled } from './Layout.styles';
+
+const Layout = ({ children }) => <Styled.Layout>{children}</Styled.Layout>;
 
 export default Layout;
