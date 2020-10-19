@@ -1,1 +1,1 @@
-export { default as SiteBar } from './SiteBar';
+export { default } from './SiteBar';

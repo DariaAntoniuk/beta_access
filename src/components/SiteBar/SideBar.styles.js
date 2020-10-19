@@ -19,6 +19,7 @@ const NavLink = styled(DefaultNavLink)`
     font-size: 18px;
     padding: 0 5px;
     color: grey;
+
     &.active {
         color: palevioletred;
     }

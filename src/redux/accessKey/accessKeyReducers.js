@@ -26,14 +26,14 @@ const loading = (state = false, action) => {
     }
 };
 
-const error = (state = '', action) => {
+const error = (state = null, action) => {
     switch (action.type) {
         case accessKeyTypes.ACCESS_KEY_ERROR:
             return action.payload;
 
         case accessKeyTypes.ACCESS_KEY_REQUEST:
         case accessKeyTypes.ACCESS_KEY_SUCCESS:
-            return '';
+            return null;
 
         default:
             return state;

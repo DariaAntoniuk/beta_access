@@ -1,33 +1,32 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { accessKeyOperation } from '../redux/accessKey';
+import { accessKeyOperation } from 'redux/accessKey';
 
-import { Form } from '../components/Form';
-import { FormField } from '../components/FormField';
-import { Button } from '../components/Button';
+import Form from 'components/Form';
+import FormField from 'components/FormField';
+import Button from 'components/Button';
 
 const BetaAccessPage = () => {
-    const [code, setCode] = useState('');
+    const [accessKey, setAccessKey] = useState('');
     const dispatch = useDispatch();
 
     const handleInputChange = ({ target: { value } }) => {
-        setCode(value);
+        setAccessKey(value);
     };
 
     const handleSubmit = e => {
         e.preventDefault();
 
-        console.log('submit', code);
-        dispatch(accessKeyOperation.checkAccessKey(code));
-        setCode('');
+        dispatch(accessKeyOperation.checkAccessKey(accessKey));
+        setAccessKey('');
     };
 
     return (
         <div>
             <h1>Beta Access Page</h1>
             <Form onSubmit={handleSubmit}>
-                <FormField title="Please enter a code" value={code} onChange={handleInputChange} />
+                <FormField title="Please enter a code" value={accessKey} onChange={handleInputChange} />
 
                 <Button title="Submit" />
             </Form>

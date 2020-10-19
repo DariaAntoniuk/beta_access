@@ -1,5 +1,5 @@
 export const paths = {
-    betAccess: '/',
+    betaAccess: '/',
     home: '/home',
     about: '/about',
 };

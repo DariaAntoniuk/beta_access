@@ -6,15 +6,13 @@ import { accessKeySelectors } from 'redux/accessKey';
 
 import { paths } from 'routes';
 
-const PublicRoute = ({ component: Component, ...routeProp }) => {
-    const hasAccessKey = useSelector(state => accessKeySelectors.getAccessKey(state));
+const PublicRoute = ({ component: Component, restricted, ...routeProps }) => {
+    const hasAccessKey = useSelector(accessKeySelectors.getAccessKey);
 
     return (
         <Route
-            {...routeProp}
-            render={props =>
-                hasAccessKey && routeProp.restricted ? <Redirect to={paths.home} /> : <Component {...props} />
-            }
+            {...routeProps}
+            render={props => (hasAccessKey && restricted ? <Redirect to={paths.home} /> : <Component {...props} />)}
         />
     );
 };

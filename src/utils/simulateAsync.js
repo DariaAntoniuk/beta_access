@@ -1,14 +1,14 @@
-import key from 'accessKey.json';
+import database from 'db.json';
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 const simulateAsync = accessKey =>
     new Promise((resolve, reject) =>
         setTimeout(() => {
-            if (key.accessKey.includes(accessKey)) {
+            if (database.accessKeys.includes(accessKey)) {
                 resolve(accessKey);
             } else {
-                reject('Whoops, code is wrong');
+                reject('Whoops, access key is wrong');
             }
         }, getRandomInt(500, 2000))
     );
