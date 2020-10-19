@@ -10,7 +10,7 @@ const checkAccessKey = accessKey => dispatch => {
             dispatch(accessKeyActions.accessKeySuccess(response));
         })
         .catch(error => {
-            dispatch(accessKeyActions.accessKeyError(error.message));
+            dispatch(accessKeyActions.accessKeyError(error));
         });
 };
 
